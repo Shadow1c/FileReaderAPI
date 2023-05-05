@@ -8,9 +8,9 @@ using System.Formats.Asn1;
 
 namespace FileReaderAPI.Services
 {
-    public class ReadFileService
+    public class ReadFileService : IReadFileService
     {
-        private List<Order> GetFileData()
+        public List<Order> GetFileData()
         {
             var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
             {

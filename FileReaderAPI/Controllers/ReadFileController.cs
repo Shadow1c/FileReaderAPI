@@ -8,6 +8,15 @@ namespace FileReaderAPI.Controllers
     [Route("[controller]")]
     public class ReadFileController : Controller
     {
+        private readonly IReadFileService _service;
+        private readonly ILogger<ReadFileController> _logger;
+
+        public ReadFileController(ILogger<ReadFileController> logger, IReadFileService service)
+        {
+            _logger = logger;
+            _service = service;
+        }
+
         [HttpGet]
         // GET: ReadFileController
         public ActionResult GetAll()
