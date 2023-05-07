@@ -10,6 +10,6 @@ namespace FileReaderAPI.Services
 
         public List<Order> GetAll();
 
-        public List<Order> GetOrder(string id);
+        public Order GetOrder(string id);
     }
 }

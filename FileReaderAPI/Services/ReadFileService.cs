@@ -14,7 +14,7 @@ namespace FileReaderAPI.Services
         {
             var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                Delimiter = ",;"
+                Delimiter = ","
             };
             using (var reader = new StreamReader("C:/Users/rysza/Desktop/TestingCSV/convertcsv.csv"))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -26,13 +26,15 @@ namespace FileReaderAPI.Services
 
         public List<Order> GetAll()
         {
-            var allOrders = GetFileData();
-            return new List<Order>();
+                var allOrders = GetFileData();
+                return allOrders;
+            
         }
 
-        public List<Order> GetOrder(string id)
+        public Order GetOrder(string id)
         {
-            return new List<Order>();
+            var OrderById = GetFileData();
+            return OrderById.Single(order => order.Number == id);
         }
     }
 }

@@ -21,16 +21,30 @@ namespace FileReaderAPI.Controllers
         // GET: ReadFileController
         public ActionResult GetAll()
         {
-            var result = new ReadFileService().GetAll();
-            return StatusCode(200, result);
+            try
+            {
+                var result = _service.GetAll();
+                return StatusCode(200, result);
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(400, "Error");
+            }
         }
 
         // GET: ReadFileController/5
         [HttpGet("{id}")]
-        public ActionResult GetOrder([FromQuery]string id)
+        public ActionResult GetOrder([FromRoute]string id)
         {
-            var result = new ReadFileService().GetOrder(id);
-            return StatusCode(200, result);
+            try
+            {
+                var result = _service.GetOrder(id);
+                return StatusCode(200, result);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(404, "Not Found");
+            }
         }
     }
 }

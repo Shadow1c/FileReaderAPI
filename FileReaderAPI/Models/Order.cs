@@ -7,11 +7,11 @@ namespace FileReaderAPI.Model
     public class Order
     {
         [Required]
-        public string? Number { get; set; }
+        public string Number { get; set; }
         [Required]
-        public string? ClientCode { get; set; }
+        public string ClientCode { get; set; }
         [Required]
-        public string? ClientName { get; set; }
+        public string ClientName { get; set; }
         [Required]
         [Format("dd/MM/yyyy")]
         public DateTime OrderDate { get; set; }
