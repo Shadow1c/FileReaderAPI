@@ -1,22 +1,24 @@
-﻿using FileReaderAPI.Model;
+﻿using CsvHelper;
+using FileReaderAPI.Model;
 using System.Globalization;
-using System.Reflection.PortableExecutable;
-using CsvHelper.Configuration;
-using CsvHelper;
-using CsvHelper.TypeConversion;
-using System.Formats.Asn1;
 
 namespace FileReaderAPI.Services
 {
     public class ReadFileService : IReadFileService
     {
+        private readonly string _filePath;
+
+        public ReadFileService(IConfiguration configuration)
+        {
+            _filePath = configuration.GetValue<string>("FileDataInfo");
+        }
         public List<Order> GetFileData()
         {
             var config = new CsvHelper.Configuration.CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 Delimiter = ","
             };
-            using (var reader = new StreamReader("C:/Users/rysza/Desktop/TestingCSV/convertcsv.csv"))
+            using (var reader = new StreamReader(_filePath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 var records = csv.GetRecords<Order>().ToList();
@@ -26,9 +28,9 @@ namespace FileReaderAPI.Services
 
         public List<Order> GetAll()
         {
-                var allOrders = GetFileData();
-                return allOrders;
-            
+            var allOrders = GetFileData();
+            return allOrders;
+
         }
 
         public Order GetOrder(string id)
