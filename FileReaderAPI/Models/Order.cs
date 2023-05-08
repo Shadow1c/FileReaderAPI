@@ -13,9 +13,9 @@ namespace FileReaderAPI.Model
         [Required]
         public string ClientName { get; set; }
         [Required]
-        [Format("dd/MM/yyyy")]
+        [Format("dd.MM.yyyy")]
         public DateTime OrderDate { get; set; }
-        [Format("dd/MM/yyyy")]
+        [Format("dd.MM.yyyy")]
         public DateTime ShipmentDate { get; set; }
         [Required]
         public int Quantity { get; set; }
